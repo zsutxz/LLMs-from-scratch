@@ -75,13 +75,13 @@ allowed-tools: [WebFetch, Read, Write, mcp__filesystem__write_file, mcp__filesys
 3. **结构翻译** - 按段落和标题结构进行翻译
 4. **格式检查** - 确保Markdown格式完整无损
 5. **质量校对** - 检查技术准确性和表达流畅性
-6. **本地保存** - 保存为 `[原文件名]_zh.md`
+6. **本地保存** - 保存为 [原文件名]_zh.md
 
 ## 输出格式
 
 ### 文件命名
-- URL文章：`[网站名称]_[文章标题]_zh.md`
-- 直接粘贴：`翻译文章_[日期时间]_zh.md`
+-- 翻译后的文件保存为 “[原文件名]_zh.md”
+
 
 ### 文件结构
 ```markdown
@@ -135,9 +135,3 @@ Deploying ML models at scale requires careful consideration of latency, throughp
 ---
 
 *💡 提示：此技能专注于技术文章的高质量翻译，确保技术准确性的同时提升中文读者的阅读体验。*
-
-## 🌐 Multi-language Support
-This skill supports both Chinese and English commands:
-- Chinese: `/翻译it文章`
-- English: `/translate-it-article`  
-- Original: `/it-translate`
