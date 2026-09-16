@@ -6,7 +6,7 @@
 
 import argparse
 import matplotlib.pyplot as plt
-from ffn_moe_memory_estimator import (
+from memory_estimator_moe import (
     estimate_params_and_hidden,
     ffn_params,
     router_params,
