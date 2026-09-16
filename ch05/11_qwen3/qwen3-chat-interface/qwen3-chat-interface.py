@@ -3,6 +3,9 @@
 #   - https://www.manning.com/books/build-a-large-language-model-from-scratch
 # Code: https://github.com/rasbt/LLMs-from-scratch
 
+import os
+os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"  # 必须在 import transformers 前设置！
+
 import torch
 import chainlit
 
@@ -114,6 +117,7 @@ async def main(message: chainlit.Message):
     """
     The main Chainlit function.
     """
+
     # 1) Encode input
     input_ids = TOKENIZER.encode(message.content)
     input_ids_tensor = torch.tensor(input_ids, device=DEVICE).unsqueeze(0)

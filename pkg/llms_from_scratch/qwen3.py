@@ -651,7 +651,7 @@ class Qwen3Tokenizer:
 
 
 def download_from_huggingface(repo_id, filename, local_dir, revision="main"):
-    base_url = "https://huggingface.co"
+    base_url = os.environ.get("HF_ENDPOINT", "https://huggingface.co")
     url = f"{base_url}/{repo_id}/resolve/{revision}/{filename}"
     Path(local_dir).mkdir(parents=True, exist_ok=True)
     dest_path = os.path.join(local_dir, filename)
@@ -674,7 +674,15 @@ def download_from_huggingface_from_snapshots(repo_id, local_dir):
     from huggingface_hub import hf_hub_download, snapshot_download
     from safetensors.torch import load_file  # or your preferred loader
 
-    repo_dir = snapshot_download(repo_id=repo_id, local_dir=local_dir)
+    # Get endpoint from environment variable with fallback
+    endpoint = os.environ.get("HF_ENDPOINT", "https://huggingface.co")
+
+    repo_dir = snapshot_download(
+        repo_id=repo_id,
+        local_dir=local_dir,
+        endpoint=endpoint,
+        resume_download=True
+    )
 
     index_path = os.path.join(repo_dir, "model.safetensors.index.json")
     single_file_path = os.path.join(repo_dir, "model.safetensors")
