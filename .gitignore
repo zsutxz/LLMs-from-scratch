@@ -1,3 +1,6 @@
+# Reports
+reports/
+
 # Configs and keys
 .chainlit
 ch05/07_gpt_to_llama/config.json
@@ -5,6 +8,7 @@ ch07/02_dataset-utilities/config.json
 ch07/03_model-evaluation/config.json
 
 # Graphics
+loss.pdf
 appendix-D/01_main-chapter-code/1.pdf
 appendix-D/01_main-chapter-code/2.pdf
 appendix-D/01_main-chapter-code/3.pdf
@@ -33,6 +37,7 @@ ch07/01_main-chapter-code/loss-plot-alpaca52k.pdf
 ch07/04_preference-tuning-with-dpo/reward margins-plot.pdf
 
 # Checkpoint files
+model.pth
 appendix-A/01_main-chapter-code/model.pth
 
 appendix-E/01_main-chapter-code/gpt2
@@ -72,6 +77,10 @@ ch05/11_qwen3/Qwen3-32B
 ch05/11_qwen3/Qwen3-32B-Base
 ch05/12_gemma3/gemma-3-270M-it
 ch05/12_gemma3/gemma-3-270M
+ch05/17_gemma4/gemma-4-E2B
+ch05/17_gemma4/gemma-4-E2B-it
+ch05/17_gemma4/gemma-4-E4B
+ch05/17_gemma4/gemma-4-E4B-it
 ch05/13_olmo3/Olmo-3-1025-7B
 ch05/13_olmo3/Olmo-3-1125-32B
 ch05/13_olmo3/Olmo-3-7B-Instruct
@@ -164,6 +173,7 @@ ch0?/0?_user_interface/.files
 *.lock
 
 # Temporary and OS-related files
+temp
 chainlit.md
 Untitled.ipynb
 .DS_Store
@@ -340,5 +350,4 @@ cython_debug/
 # pixi environments
 .pixi
 *.egg-info
-
 

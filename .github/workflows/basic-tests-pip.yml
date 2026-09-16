@@ -28,10 +28,10 @@ jobs:
     name: Pip Tests (Ubuntu Only)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.10"  # tests for backwards compatibility
 
@@ -40,7 +40,10 @@ jobs:
           python -m venv .venv
           source .venv/bin/activate
           pip install --upgrade pip
-          pip install -r requirements.txt
+          # Necessary because there is not much storage space on this runner:
+          pip install torch==2.9.1+cpu --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements.txt --no-deps
+          pip install jupyterlab pandas tensorflow matplotlib
           pip install pytest pytest-ruff nbval
 
       - name: Test Selected Python Scripts

@@ -186,6 +186,9 @@ def load_weights_into_gpt(gpt, params):
 
 def generate(model, idx, max_new_tokens, context_size, temperature=0.0, top_k=None, eos_id=None):
 
+    if eos_id is not None and idx.shape[0] != 1:
+        raise ValueError("EOS stopping currently supports batch size 1 only")
+
     # For-loop is the same as before: Get logits, and only focus on last time step
     for _ in range(max_new_tokens):
         idx_cond = idx[:, -context_size:]
@@ -253,16 +256,16 @@ def main(gpt_config, input_prompt, model_size, device):
 
 if __name__ == "__main__":
 
-    parser = argparse.ArgumentParser(description="Generate text with a pretrained GPT-2 model.")
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter, description="Generate text with a pretrained GPT-2 model.")
     parser.add_argument(
         "--prompt",
         default="Every effort moves you",
-        help="Prompt text used to seed the generation (default matches the script's built-in prompt)."
+        help="Prompt text used to seed the generation."
     )
     parser.add_argument(
         "--device",
         default="cpu",
-        help="Device for running inference, e.g., cpu, cuda, mps, or auto. Defaults to cpu."
+        help="Device for running inference, e.g., cpu, cuda, mps, or auto."
     )
 
     args = parser.parse_args()
